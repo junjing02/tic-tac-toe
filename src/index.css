@@ -1,12 +1,12 @@
 :root {
-  --color-bg-start: #f6d365;
+  --color-bg-start: #efb6ff;
   --color-bg-end: #fda085;
-  --color-square: #fff176;
-  --color-square-hover: #fbc02d;
+  --color-square: #ffffff;
+  --color-square-hover: #dedede;
   --color-win: #81c784;
   --color-text: #333;
-  --color-button: #8e44ad;
-  --color-button-hover: #9b59b6;
+  --color-button: #b3f3fc;
+  --color-button-hover: #93e0ff;
 }
 
 html, body {
@@ -38,6 +38,7 @@ html, body {
   aspect-ratio: 1;    /* always a square */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows:    repeat(3, 1fr);
   gap: 1vmin;
   margin-bottom: 2vmin;
 }
@@ -83,15 +84,100 @@ html, body {
 
 .restart {
   background: var(--color-button);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 8px;
   padding: 2vmin 4vmin;
   font-size: 4vmin;
   cursor: pointer;
   transition: background 0.2s;
+  border-radius: 20px;
 }
 
 .restart:hover {
   background: var(--color-button-hover);
 }
+
+/* Modal backdrop */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Modal box */
+.modal {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Modal text */
+.modal p {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+/* Modal button */
+.modal-button {
+  background: var(--color-button);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-button:hover {
+  background: var(--color-button-hover);
+}
+
+/* container for title + game */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* the main title */
+.title {
+  font-size: 6vmin;                       /* scales with viewport */
+  margin-bottom: 2vmin;                   /* space below title */
+  color: var(--color-text);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ===== SCOREBOARD ===== */
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2vmin;
+  padding: 1vmin 2vmin;
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+}
+
+.score {
+  font-size: 5vmin;
+  font-weight: bold;
+  color: var(--color-text);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Optional: give X and O different accent colors */
+.player-x { color: #d32f2f; /* red-ish */ }
+.player-o { color: #1976d2; /* blue-ish */ }
