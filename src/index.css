@@ -1,13 +1,95 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-bg-start: #f6d365;
+  --color-bg-end: #fda085;
+  --color-square: #fff176;
+  --color-square-hover: #fbc02d;
+  --color-win: #81c784;
+  --color-text: #333;
+  --color-button: #8e44ad;
+  --color-button-hover: #9b59b6;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-start) 0%,
+    var(--color-bg-end) 100%
+  );
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vmin;      /* 90% of the smaller viewport dimension */
+  max-width: 600px;   /* caps it on large displays */
+}
+
+.game-board {
+  width: 100%;
+  aspect-ratio: 1;    /* always a square */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vmin;
+  margin-bottom: 2vmin;
+}
+
+.square {
+  background: var(--color-square);
+  border: none;
+  border-radius: 8px;
+  font-size: 10vmin;               /* scales with viewport */
+  color: var(--color-text);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.square:hover {
+  background: var(--color-square-hover);
+}
+
+.square:active {
+  transform: scale(0.95);
+}
+
+.square.winner {
+  background: var(--color-win);
+}
+
+.game-info {
+  text-align: center;
+}
+
+.status {
+  font-size: 5vmin;
+  margin-bottom: 2vmin;
+  color: var(--color-text);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.restart {
+  background: var(--color-button);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 2vmin 4vmin;
+  font-size: 4vmin;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.restart:hover {
+  background: var(--color-button-hover);
 }
